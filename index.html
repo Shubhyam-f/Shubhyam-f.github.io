@@ -16,9 +16,14 @@
   <header class="topbar">
     <a class="wordmark" href="#home" aria-label="Shubhyam Nai home"><span class="mark">SN</span><span>SHUBHYAM NAI<span class="wordmark-sub">FINANCE · VALUATION · DATA</span></span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#work">WORK</a><a href="#approach">APPROACH</a><a href="#about">ABOUT</a><a class="nav-contact" href="#contact">LET'S CONNECT <span>↗</span></a>
-    </nav>
+   <nav class="nav" aria-label="Main navigation">
+  <a href="#work">WORK</a>
+  <a href="#approach">APPROACH</a>
+  <a href="#about">ABOUT</a>
+  <button class="theme-toggle" id="themeToggle" type="button"
+          aria-label="Switch to light theme">☼ LIGHT</button>
+  <a class="nav-contact" href="#contact">LET'S CONNECT <span>↗</span></a>
+</nav>
   </header>
 
   <main>
@@ -45,14 +50,164 @@
 
     <section class="work section-wrap" id="work">
       <div class="section-heading reveal"><div><div class="eyebrow">01 / SELECTED WORK</div><h2>Projects with a<br><em>point of view.</em></h2></div><p>A selection of ongoing and completed learning projects. Each one is an opportunity to turn raw information into a clearer business story.</p></div>
-      <div class="filter-row reveal" role="group" aria-label="Filter projects"><button class="filter active" data-filter="all">ALL WORK <span>05</span></button><button class="filter" data-filter="valuation">VALUATION</button><button class="filter" data-filter="analytics">ANALYTICS</button><button class="filter" data-filter="data">DATA</button></div>
-      <div class="project-grid">
-        <article class="project-card project-feature reveal" data-category="valuation"><div class="project-visual visual-titan"><div class="visual-label">EQUITY RESEARCH / 01</div><div class="visual-orb"></div><div class="visual-word">TITAN<span>COMPANY</span></div><div class="visual-foot"><span>VALUATION STUDY</span><span>2026 ↗</span></div></div><div class="project-info"><div class="project-kicker">VALUATION · FINANCIAL ANALYSIS <span>01 / 05</span></div><h3>Titan Company</h3><p>A company valuation study built around financial statement analysis, business drivers, forecasting assumptions and valuation methodology.</p><div class="project-bottom"><span class="status"><i></i> IN PROGRESS</span><button class="details-btn" data-project="titan">VIEW OVERVIEW ↗</button></div></div></article>
-        <article class="project-card reveal" data-category="valuation"><div class="project-visual visual-ultra"><div class="visual-label">DCF MODEL / 02</div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="visual-word">ULTRATECH<span>CEMENT</span></div><div class="visual-foot"><span>DISCOUNTED CASH FLOW</span><span>2026 ↗</span></div></div><div class="project-info"><div class="project-kicker">VALUATION · MODELLING <span>02 / 05</span></div><h3>UltraTech Cement</h3><p>A DCF exercise using historical financials, forecast cash flows and terminal value assumptions.</p><div class="project-bottom"><span class="status"><i></i> MODEL STUDY</span><button class="details-btn" data-project="ultra">VIEW OVERVIEW ↗</button></div></div></article>
-        <article class="project-card reveal" data-category="analytics"><div class="project-visual visual-power"><div class="visual-label">BUSINESS INTELLIGENCE / 03</div><div class="mini-dashboard"><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mini-donut"></div><div class="mini-lines"><i></i><i></i><i></i></div></div><div class="visual-foot"><span>POWER BI</span><span>↗</span></div></div><div class="project-info"><div class="project-kicker">POWER BI · BUSINESS ANALYTICS <span>03 / 05</span></div><h3>CRM Sales Analysis</h3><p>A dashboard project exploring sales performance and a decline in CRM sales through KPIs and visual analysis.</p><div class="project-bottom"><span class="status"><i></i> DASHBOARD PROJECT</span><button class="details-btn" data-project="crm">VIEW OVERVIEW ↗</button></div></div></article>
-        <article class="project-card reveal" data-category="analytics"><div class="project-visual visual-pizza"><div class="visual-label">DATA STORY / 04</div><div class="pizza-ring"><span>SALES<br>INSIGHTS</span></div><div class="visual-foot"><span>POWER BI · DASHBOARD</span><span>↗</span></div></div><div class="project-info"><div class="project-kicker">POWER BI · VISUALISATION <span>04 / 05</span></div><h3>Pizza Sales Dashboard</h3><p>An interactive dashboard exercise focused on organising sales data into useful business views and metrics.</p><div class="project-bottom"><span class="status"><i></i> DASHBOARD PROJECT</span><button class="details-btn" data-project="pizza">VIEW OVERVIEW ↗</button></div></div></article>
-        <article class="project-card reveal" data-category="data"><div class="project-visual visual-python"><div class="visual-label">DATA PIPELINE / 05</div><div class="code-window"><span>import yfinance</span><span>collect( ) → clean( )</span><span>store → analyse</span><b>▍</b></div><div class="visual-foot"><span>PYTHON · SQL</span><span>↗</span></div></div><div class="project-info"><div class="project-kicker">PYTHON · SQL · DATA <span>05 / 05</span></div><h3>Indian Stocks Data Pipeline</h3><p>A small workflow using Yahoo Finance data, Python and SQLite to collect and store market data for further analysis.</p><div class="project-bottom"><span class="status"><i></i> LEARNING PROJECT</span><button class="details-btn" data-project="stocks">VIEW OVERVIEW ↗</button></div></div></article>
+      <div class="filter-row reveal" role="group" aria-label="Filter projects"><button class="filter active" data-filter="all">ALL WORK <span>07</span></button><button class="filter" data-filter="valuation">VALUATION</button><button class="filter" data-filter="analytics">ANALYTICS</button><button class="filter" data-filter="data">DATA</button></div>
+   <div class="project-grid">
+
+  <!-- 01: FEATURED PROJECT -->
+  <article class="project-card project-feature reveal" data-category="data">
+    <div class="project-visual visual-inalpha">
+      <div class="visual-label">OPEN-SOURCE COLLABORATION / 01</div>
+      <div class="inalpha-graphic">
+        <div class="inalpha-node">CANDIDATE</div>
+        <div class="inalpha-line"></div>
+        <div class="inalpha-node">BACKTEST RUN</div>
+        <div class="inalpha-line"></div>
+        <div class="inalpha-node">FILL / SYMBOL</div>
       </div>
+      <div class="visual-foot">
+        <span>SQL · POWER BI · PYTHON</span>
+        <span>2026 ↗</span>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">QUANTITATIVE ANALYTICS · DATA VALIDATION <span>01 / 07</span></div>
+      <h3>Inalpha — Backtest Validation & Analytics</h3>
+      <p>Built a SQL-based validation layer and interactive Power BI prototype to trace strategy candidates, backtest runs and simulated trading results within an AI-driven quantitative trading framework.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> OPEN-SOURCE CONTRIBUTION</span>
+        <button class="details-btn" data-project="inalpha">VIEW CASE STUDY ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02: TITAN -->
+  <article class="project-card reveal" data-category="valuation">
+    <div class="project-visual visual-titan">
+      <div class="visual-label">EQUITY RESEARCH / 02</div>
+      <div class="visual-orb"></div>
+      <div class="visual-word">TITAN<span>COMPANY</span></div>
+      <div class="visual-foot">
+        <span>VALUATION STUDY</span><span>2026 ↗</span>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">VALUATION · FINANCIAL ANALYSIS <span>02 / 07</span></div>
+      <h3>Titan Company</h3>
+      <p>Developing a fundamental equity research report incorporating segment economics, operating-driver forecasts, FCFF valuation and scenario analysis.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> IN PROGRESS</span>
+        <button class="details-btn" data-project="titan">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03: ULTRATECH -->
+  <article class="project-card reveal" data-category="valuation">
+    <div class="project-visual visual-ultra">
+      <div class="visual-label">DCF MODEL / 03</div>
+      <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="visual-word">ULTRATECH<span>CEMENT</span></div>
+      <div class="visual-foot">
+        <span>DISCOUNTED CASH FLOW</span><span>2026 ↗</span>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">VALUATION · MODELLING <span>03 / 07</span></div>
+      <h3>UltraTech Cement</h3>
+      <p>Built an FCFF-based DCF model using historical financials, beta estimation, CAPM, WACC and forecast cash flows.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> MODEL STUDY</span>
+        <button class="details-btn" data-project="ultra">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 04: CRM -->
+  <article class="project-card reveal" data-category="analytics">
+    <div class="project-visual visual-power">
+      <div class="visual-label">BUSINESS INTELLIGENCE / 04</div>
+      <div class="mini-dashboard">
+        <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="mini-donut"></div>
+        <div class="mini-lines"><i></i><i></i><i></i></div>
+      </div>
+      <div class="visual-foot"><span>POWER BI</span><span>↗</span></div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">POWER BI · BUSINESS ANALYTICS <span>04 / 07</span></div>
+      <h3>B2B Sales Pipeline CRM</h3>
+      <p>Built a Power BI sales-pipeline dashboard using time-intelligence DAX to analyse deal-stage progression, agent performance and pipeline bottlenecks.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> DASHBOARD PROJECT</span>
+        <button class="details-btn" data-project="crm">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 05: HR ATTRITION -->
+  <article class="project-card reveal" data-category="analytics">
+    <div class="project-visual visual-hr">
+      <div class="visual-label">WORKFORCE ANALYTICS / 05</div>
+      <div class="hr-graphic">
+        <div class="hr-stat"><span>ATTRITION</span><b>01</b></div>
+        <div class="hr-bars"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hr-caption">TENURE · SATISFACTION · RETENTION</div>
+      </div>
+      <div class="visual-foot"><span>POWER BI · DAX</span><span>↗</span></div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">POWER BI · PEOPLE ANALYTICS <span>05 / 07</span></div>
+      <h3>HR Attrition & Workforce Analysis</h3>
+      <p>Developed an interactive workforce dashboard featuring dynamic tenure-bucket parameters and custom DAX measures to investigate employee attrition patterns.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> DASHBOARD PROJECT</span>
+        <button class="details-btn" data-project="hr">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 06: PIZZA -->
+  <article class="project-card reveal" data-category="analytics">
+    <div class="project-visual visual-pizza">
+      <div class="visual-label">DATA STORY / 06</div>
+      <div class="pizza-ring"><span>SALES<br>INSIGHTS</span></div>
+      <div class="visual-foot"><span>POWER BI · DASHBOARD</span><span>↗</span></div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">POWER BI · VISUALISATION <span>06 / 07</span></div>
+      <h3>Pizza Sales Dashboard</h3>
+      <p>Structured transactional sales data into an interactive dashboard to explore revenue patterns, product performance and order trends.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> DASHBOARD PROJECT</span>
+        <button class="details-btn" data-project="pizza">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 07: INDIAN STOCKS -->
+  <article class="project-card reveal" data-category="data">
+    <div class="project-visual visual-python">
+      <div class="visual-label">DATA PIPELINE / 07</div>
+      <div class="code-window">
+        <span>import yfinance</span>
+        <span>collect( ) → clean( )</span>
+        <span>store → analyse</span>
+        <b>▍</b>
+      </div>
+      <div class="visual-foot"><span>PYTHON · SQL</span><span>↗</span></div>
+    </div>
+    <div class="project-info">
+      <div class="project-kicker">PYTHON · SQL · DATA <span>07 / 07</span></div>
+      <h3>Indian Stocks Data Pipeline</h3>
+      <p>Collected market data for five Indian stocks using Python and yfinance, stored it in SQLite and connected the dataset to Power BI for analysis.</p>
+      <div class="project-bottom">
+        <span class="status"><i></i> LEARNING PROJECT</span>
+        <button class="details-btn" data-project="stocks">VIEW OVERVIEW ↗</button>
+      </div>
+    </div>
+  </article>
+
+</div>
       <p class="work-note">Project descriptions reflect the scope of the work to date. Detailed methodology, supporting files and findings will be added as each case study is prepared.</p>
     </section>
 
