@@ -90,76 +90,124 @@ html[data-theme="light"] .project-info p {
     font-weight: 500;
     color: #1A1D20;
 }
-
 /* ==========================================
-   IMAGE-BASED PROJECT GALLERY
+   DYNAMIC MOTION & ANIMATIONS (ETL & VISUALS)
    ========================================== */
 
-.img-placeholder {
-  position: relative;
-  padding: 0; /* Remove internal padding to let image fill space */
-  background: var(--panel2);
+/* 1. HERO ARTWORK - ROTATING ORBITS & DRAWING LINE */
+@keyframes slow-spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes slow-spin-reverse { 100% { transform: translate(-50%, -50%) rotate(-360deg); } }
+@keyframes float { 50% { transform: translateY(-8px); } }
+@keyframes draw-line { 100% { stroke-dashoffset: 0; } }
+
+.orbit-one { animation: slow-spin 40s linear infinite; }
+.orbit-two { animation: slow-spin-reverse 60s linear infinite; }
+.orbit-three { animation: slow-spin 90s linear infinite; }
+
+.chart-line path:first-child {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw-line 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.2s;
 }
-.img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.85; /* Slight transparency to maintain terminal vibe */
-  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+.data-chip { animation: float 6s ease-in-out infinite; }
+.chip-b { animation-delay: -2s; }
+.chip-c { animation-delay: -4s; }
+
+/* 2. ETL DATA PIPELINE (INDIAN STOCKS) - TYPING EFFECT */
+@keyframes type-line {
+    0% { width: 0; opacity: 0; }
+    1% { opacity: 1; }
+    100% { width: 100%; opacity: 1; }
 }
-.project-card:hover .img-placeholder img {
-  opacity: 1;
-  transform: scale(1.05); /* Gentle zoom effect on hover */
+@keyframes blink { 50% { opacity: 0; } }
+
+.code-window span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+}
+.project-card:hover .code-window span:nth-child(1) { animation: type-line 0.8s steps(20, end) 0s forwards; }
+.project-card:hover .code-window span:nth-child(2) { animation: type-line 0.8s steps(20, end) 0.8s forwards; }
+.project-card:hover .code-window span:nth-child(3) { animation: type-line 0.8s steps(20, end) 1.6s forwards; }
+.code-window b { animation: blink 1s step-end infinite; }
+
+/* 3. INALPHA (AI TRADING) - DATA FLOW LINES */
+@keyframes data-flow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.inalpha-graphic {
+  position: absolute; top: 50%; left: 8%; right: 8%;
+  transform: translateY(-50%); display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.inalpha-node {
+  border: 1px solid rgba(185,154,104,.65); background: rgba(18,27,29,.78); color: #e8ddc9;
+  padding: 12px 9px; text-align: center; font: 8px var(--mono); letter-spacing: .06em; flex: 1;
+}
+.inalpha-line {
+    height: 1px;
+    width: 12px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, rgba(185,154,104,0.1), #b99a68, rgba(185,154,104,0.1));
+    background-size: 200% 100%;
+    animation: data-flow 1.5s linear infinite;
+}
+@media(max-width:560px) {
+  .inalpha-graphic { left: 5%; right: 5%; gap: 4px; }
+  .inalpha-node { padding: 10px 4px; font-size: 7px; }
+  .inalpha-line { width: 7px; }
 }
 
-/* Ensure text overlays sit properly on top of the images */
-.overlay-label {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  z-index: 2;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8); /* Maintain readability over images */
+/* 4. CHARTS (ULTRATECH, CRM, HR) - GROWING BARS */
+.visual-hr { background: radial-gradient(ellipse at 55% 50%, #1D2125, #141619 60%, #0F1113); }
+.hr-graphic {
+  position: absolute; top: 55px; left: 12%; right: 12%; bottom: 42px;
+  border: 1px solid rgba(169,155,190,.15); background: rgba(26,29,32,.58); padding: 17px;
 }
-.overlay-foot {
-  position: absolute;
-  bottom: 17px;
-  left: 18px;
-  right: 18px;
-  z-index: 2;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-}
+.hr-stat { display: flex; justify-content: space-between; color: #EAECEF; font: 9px var(--mono); letter-spacing: .1em; }
+.hr-stat b { font-size: 22px; color: #b99a68; font-weight: 400; }
+.hr-bars { height: 75px; display: flex; align-items: end; gap: 12px; border-bottom: 1px solid rgba(169,155,190,.15); padding: 0 5px 5px; margin-top: 12px; }
+.hr-bars i { flex: 1; background: linear-gradient(#b99a68, #7e6a50); }
+.hr-bars i:nth-child(1) { height: 35%; }
+.hr-bars i:nth-child(2) { height: 62%; }
+.hr-bars i:nth-child(3) { height: 48%; }
+.hr-bars i:nth-child(4) { height: 85%; }
+.hr-bars i:nth-child(5) { height: 68%; }
+.hr-caption { margin-top: 12px; color: #9aa9b9; font: 7px var(--mono); letter-spacing: .08em; }
 
-/* Elegant shadow overlay so text is always readable regardless of image brightness */
-.img-placeholder::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom, 
-    rgba(20,22,25,0.7) 0%, 
-    transparent 30%, 
-    transparent 70%, 
-    rgba(20,22,25,0.8) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+@keyframes grow-up {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
 }
+.bars i, .mini-bars i, .hr-bars i {
+    transform-origin: bottom;
+    transform: scaleY(0);
+}
+.project-card:hover .bars i,
+.project-card:hover .mini-bars i,
+.project-card:hover .hr-bars i {
+    animation: grow-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.project-card:hover .bars i:nth-child(1), .project-card:hover .mini-bars i:nth-child(1), .project-card:hover .hr-bars i:nth-child(1) { animation-delay: 0.0s; }
+.project-card:hover .bars i:nth-child(2), .project-card:hover .mini-bars i:nth-child(2), .project-card:hover .hr-bars i:nth-child(2) { animation-delay: 0.1s; }
+.project-card:hover .bars i:nth-child(3), .project-card:hover .mini-bars i:nth-child(3), .project-card:hover .hr-bars i:nth-child(3) { animation-delay: 0.2s; }
+.project-card:hover .bars i:nth-child(4), .project-card:hover .mini-bars i:nth-child(4), .project-card:hover .hr-bars i:nth-child(4) { animation-delay: 0.3s; }
+.project-card:hover .bars i:nth-child(5), .project-card:hover .mini-bars i:nth-child(5), .project-card:hover .hr-bars i:nth-child(5) { animation-delay: 0.4s; }
+.project-card:hover .bars i:nth-child(6), .project-card:hover .mini-bars i:nth-child(6) { animation-delay: 0.5s; }
+.project-card:hover .bars i:nth-child(7) { animation-delay: 0.6s; }
 
-/* Light Theme Adjustments for Images */
-html[data-theme="light"] .img-placeholder img {
-  opacity: 0.9;
+/* 5. TITAN COMPANY & CRM DONUT - ROTATION & PULSING */
+@keyframes pulse-glow {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.03); filter: brightness(1.15); }
 }
-html[data-theme="light"] .img-placeholder::after {
-  background: linear-gradient(
-    to bottom, 
-    rgba(255,255,255,0.7) 0%, 
-    transparent 30%, 
-    transparent 70%, 
-    rgba(255,255,255,0.85) 100%
-  );
+@keyframes orbital-spin {
+    100% { transform: scaleX(1.5) rotate(335deg); }
 }
-html[data-theme="light"] .overlay-label,
-html[data-theme="light"] .overlay-foot {
-  color: #212529; /* Dark text for light overlay */
-  text-shadow: none;
-}
+.project-card:hover .visual-orb { animation: pulse-glow 2s ease-in-out infinite alternate; }
+.visual-orb:after { animation: orbital-spin 20s linear infinite; }
+
+.mini-donut { transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.project-card:hover .mini-donut { transform: rotate(180deg); }
