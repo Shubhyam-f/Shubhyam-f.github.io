@@ -7,12 +7,62 @@ const filters=[...document.querySelectorAll('.filter')];
 const cards=[...document.querySelectorAll('.project-card')];
 filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(item=>item.classList.remove('active'));button.classList.add('active');const selected=button.dataset.filter;cards.forEach(card=>{card.hidden=selected!=='all'&&card.dataset.category!==selected;});}));
 
-const projectInfo={
- titan:{kicker:'VALUATION / FINANCIAL ANALYSIS',title:'Titan Company',description:'A company valuation study built around understanding the business, organising historical financial information, identifying operating drivers and developing forecast assumptions.',focus:'Financial statement analysis · Forecasting · Cost of capital · Valuation methodology',note:'This is an ongoing study. The detailed model, source references, assumptions and final conclusions will be published only after the case study has been reviewed.'},
- ultra:{kicker:'DCF / FINANCIAL MODELLING',title:'UltraTech Cement',description:'A discounted cash flow exercise using historical financial information to build a view of future cash flows and estimate a continuing value.',focus:'Historical financials · Forecast cash flows · Terminal value · DCF mechanics',note:'This is a learning model, not investment advice or a published recommendation. Supporting assumptions and model outputs will be added with the full case study.'},
- crm:{kicker:'POWER BI / BUSINESS ANALYTICS',title:'CRM Sales Analysis',description:'A Power BI dashboard project examining sales performance and exploring a decline in CRM sales through metrics and visual breakdowns.',focus:'KPI design · Power Query · Data modelling · Dashboard communication',note:'Dashboard screenshots, data context and the specific observations will be added once the project materials are selected for publication.'},
- pizza:{kicker:'POWER BI / DATA VISUALISATION',title:'Pizza Sales Dashboard',description:'A dashboard exercise that turns transactional sales data into an organised set of business views for exploring performance.',focus:'Data preparation · Measures · Visual hierarchy · Interactive reporting',note:'This portfolio overview describes the project scope. Specific findings will be documented alongside the dashboard.'},
- stocks:{kicker:'PYTHON / SQL / DATA PIPELINE',title:'Indian Stocks Data Pipeline',description:'A small data workflow using Python and yfinance to collect market data for a set of Indian stocks, store it in SQLite and make it available for analysis.',focus:'Python · yfinance · SQLite · Data storage · Power BI connection',note:'This is a learning project. It is not a real-time market data service, and data availability depends on the upstream source.'}
+const projectInfo = {
+  inalpha: {
+    kicker: "OPEN-SOURCE COLLABORATION / QUANTITATIVE ANALYTICS",
+    title: "Inalpha — Backtest Validation & Analytics",
+    description: "Developed an analytical validation and traceability prototype for an AI-driven quantitative trading framework. The work covers data checks across strategy candidates, backtest runs and simulated fills.",
+    focus: "Approximately 30 SQL validation queries · SQLite · Power BI · DAX · Power Query · Python synthetic data generation · Interactive treemap and drill-through reporting",
+    note: 'Built the validation queries, dashboard design, measures and synthetic-data testing workflow. Integration into the wider platform is handled separately by the maintainer. <br><br><a href="https://github.com/mirror29/inalpha/issues/165" target="_blank" rel="noreferrer">VIEW ISSUE #165 ↗</a> &nbsp; | &nbsp; <a href="https://github.com/mirror29/inalpha/pull/176" target="_blank" rel="noreferrer">VIEW DRAFT PR #176 ↗</a>'
+  },
+
+  titan: {
+    kicker: "EQUITY RESEARCH / FINANCIAL VALUATION",
+    title: "Titan Company",
+    description: "An ongoing fundamental equity research project examining Titan's business segments, operating economics and financial performance to develop a reasoned valuation.",
+    focus: "Segment-level analysis · Historical financial statements · Operating-driver forecasts · FCFF · Cost of capital · Scenario and sensitivity analysis",
+    note: "This research and valuation model is in progress. Forecasts and valuation conclusions will be published with their assumptions and supporting sources once reviewed."
+  },
+
+  ultra: {
+    kicker: "DCF / FINANCIAL MODELLING",
+    title: "UltraTech Cement",
+    description: "Built an FCFF-based discounted cash flow model using five years of historical financial information, five-year weekly beta regression against the NIFTY 50, CAPM, WACC and forecast cash flows. The base-case model estimated an intrinsic value of approximately ₹7,383 per share.",
+    focus: "Historical financial analysis · Weekly beta regression · CAPM · WACC · FCFF forecasting · DCF · Terminal value",
+    note: "The ₹7,383 figure is an output of the model under its base-case assumptions, not a live price target or investment recommendation. The model's assumptions and valuation date should accompany any published result."
+  },
+
+  crm: {
+    kicker: "POWER BI / BUSINESS ANALYTICS",
+    title: "B2B Sales Pipeline CRM",
+    description: "Built a Power BI operational dashboard using time-intelligence DAX to evaluate sales-stage progression, agent performance, deal movement and pipeline bottlenecks.",
+    focus: "Power BI · DAX · Time intelligence · Sales funnel analysis · KPI design · Data modelling",
+    note: "An independent dashboard project. Historical deal patterns are descriptive findings from the dataset and should not be interpreted as guaranteed predictions."
+  },
+
+  hr: {
+    kicker: "POWER BI / WORKFORCE ANALYTICS",
+    title: "HR Attrition & Workforce Analysis",
+    description: "Developed an interactive workforce analysis dashboard to investigate employee attrition patterns across tenure, department, job satisfaction and other workforce dimensions.",
+    focus: "Power BI · Power Query · Custom DAX measures · Dynamic tenure-bucket parameters · Workforce analytics",
+    note: "An independent dashboard project built using a sample employee dataset. The analysis describes patterns in the dataset, not conclusions about a real employer."
+  },
+
+  pizza: {
+    kicker: "POWER BI / DATA VISUALISATION",
+    title: "Pizza Sales Dashboard",
+    description: "Structured transactional sales data into a relational model and developed an interactive dashboard to explore revenue, order patterns, product categories and operational trends.",
+    focus: "Data cleaning · Relational modelling · Power BI · Measures · Interactive reporting",
+    note: "An independent analytics project. The dashboard is intended to demonstrate data preparation, modelling and business reporting."
+  },
+
+  stocks: {
+    kicker: "PYTHON / SQL / DATA PIPELINE",
+    title: "Indian Stocks Data Pipeline",
+    description: "Built a small market-data workflow using Python and yfinance to collect OHLCV data for five Indian stocks, store it in SQLite and make it available for Power BI analysis.",
+    focus: "Python · yfinance · SQLite · Data collection · Data storage · Power BI",
+    note: "A learning project using an external data source. It is not a real-time market-data service, and data availability depends on the upstream provider."
+  }
 };
 const dialog=document.querySelector('#projectDialog');
 document.querySelectorAll('.details-btn').forEach(button=>button.addEventListener('click',()=>{const item=projectInfo[button.dataset.project];document.querySelector('#dialogKicker').textContent=item.kicker;document.querySelector('#dialogTitle').textContent=item.title;document.querySelector('#dialogDescription').textContent=item.description;document.querySelector('#dialogFocus').textContent=item.focus;document.querySelector('#dialogNote').textContent=item.note;dialog.showModal();}));
