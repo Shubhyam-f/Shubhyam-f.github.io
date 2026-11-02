@@ -342,5 +342,94 @@ html[data-theme="light"] .nav { background: var(--bg); border-bottom-color: var(
 
 @media(prefers-reduced-motion:reduce) {
 ,::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  /* ==========================================
+   DYNAMIC MOTION & ANIMATIONS (ETL & VISUALS)
+   ========================================== */
+
+/* 1. HERO ARTWORK - ROTATING ORBITS & DRAWING LINE */
+@keyframes slow-spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes slow-spin-reverse { 100% { transform: translate(-50%, -50%) rotate(-360deg); } }
+@keyframes float { 50% { transform: translateY(-8px); } }
+@keyframes draw-line { 100% { stroke-dashoffset: 0; } }
+
+.orbit-one { animation: slow-spin 40s linear infinite; }
+.orbit-two { animation: slow-spin-reverse 60s linear infinite; }
+.orbit-three { animation: slow-spin 90s linear infinite; }
+
+.chart-line path:first-child {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw-line 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
+.data-chip { animation: float 6s ease-in-out infinite; }
+.chip-b { animation-delay: -2s; }
+.chip-c { animation-delay: -4s; }
+
+/* 2. ETL DATA PIPELINE (INDIAN STOCKS) - TYPING EFFECT */
+@keyframes type-line {
+    0% { width: 0; opacity: 0; }
+    1% { opacity: 1; }
+    100% { width: 100%; opacity: 1; }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.code-window span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+}
+.project-card:hover .code-window span:nth-child(1) { animation: type-line 0.8s steps(20, end) 0s forwards; }
+.project-card:hover .code-window span:nth-child(2) { animation: type-line 0.8s steps(20, end) 0.8s forwards; }
+.project-card:hover .code-window span:nth-child(3) { animation: type-line 0.8s steps(20, end) 1.6s forwards; }
+.code-window b { animation: blink 1s step-end infinite; }
+
+/* 3. INALPHA (AI TRADING) - DATA FLOW LINES */
+@keyframes data-flow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.inalpha-line {
+    background: linear-gradient(90deg, rgba(185,154,104,0.1), #b99a68, rgba(185,154,104,0.1));
+    background-size: 200% 100%;
+    animation: data-flow 1.5s linear infinite;
+}
+
+/* 4. CHARTS (ULTRATECH, CRM, HR) - GROWING BARS */
+@keyframes grow-up {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+.bars i, .mini-bars i, .hr-bars i {
+    transform-origin: bottom;
+    transform: scaleY(0);
+}
+.project-card:hover .bars i,
+.project-card:hover .mini-bars i,
+.project-card:hover .hr-bars i {
+    animation: grow-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.project-card:hover .bars i:nth-child(1), .project-card:hover .mini-bars i:nth-child(1), .project-card:hover .hr-bars i:nth-child(1) { animation-delay: 0.0s; }
+.project-card:hover .bars i:nth-child(2), .project-card:hover .mini-bars i:nth-child(2), .project-card:hover .hr-bars i:nth-child(2) { animation-delay: 0.1s; }
+.project-card:hover .bars i:nth-child(3), .project-card:hover .mini-bars i:nth-child(3), .project-card:hover .hr-bars i:nth-child(3) { animation-delay: 0.2s; }
+.project-card:hover .bars i:nth-child(4), .project-card:hover .mini-bars i:nth-child(4), .project-card:hover .hr-bars i:nth-child(4) { animation-delay: 0.3s; }
+.project-card:hover .bars i:nth-child(5), .project-card:hover .mini-bars i:nth-child(5), .project-card:hover .hr-bars i:nth-child(5) { animation-delay: 0.4s; }
+.project-card:hover .bars i:nth-child(6), .project-card:hover .mini-bars i:nth-child(6) { animation-delay: 0.5s; }
+.project-card:hover .bars i:nth-child(7) { animation-delay: 0.6s; }
+
+/* 5. TITAN COMPANY & CRM DONUT - ROTATION & PULSING */
+@keyframes pulse-glow {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.03); filter: brightness(1.15); }
+}
+@keyframes orbital-spin {
+    100% { transform: scaleX(1.5) rotate(335deg); }
+}
+.project-card:hover .visual-orb { animation: pulse-glow 2s ease-in-out infinite alternate; }
+.visual-orb:after { animation: orbital-spin 20s linear infinite; }
+
+.mini-donut { transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.project-card:hover .mini-donut { transform: rotate(180deg); }
 .reveal{opacity:1;transform:none}
 }
