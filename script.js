@@ -65,9 +65,53 @@ const projectInfo = {
   }
 };
 const dialog=document.querySelector('#projectDialog');
-document.querySelectorAll('.details-btn').forEach(button=>button.addEventListener('click',()=>{const item=projectInfo[button.dataset.project];document.querySelector('#dialogKicker').textContent=item.kicker;document.querySelector('#dialogTitle').textContent=item.title;document.querySelector('#dialogDescription').textContent=item.description;document.querySelector('#dialogFocus').textContent=item.focus;document.querySelector('#dialogNote').textContent=item.note;dialog.showModal();}));
+document.querySelectorAll('.details-btn').forEach(button=>button.addEventListener('click',()=>{const item=projectInfo[button.dataset.project];document.querySelector('#dialogKicker').textContent=item.kicker;document.querySelector('#dialogTitle').textContent=item.title;document.querySelector('#dialogDescription').textContent=item.description;document.querySelector('#dialogFocus').textContent=item.focus;document.querySelector('#dialogNote').innerHTML = item.note;;dialog.showModal();}));
 document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
 
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
+// DARK / LIGHT THEME
+const themeToggle = document.querySelector("#themeToggle");
+const root = document.documentElement;
+
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+
+  if (themeToggle) {
+    themeToggle.textContent =
+      theme === "dark" ? "☼ LIGHT" : "☾ DARK";
+
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark"
+        ? "Switch to light theme"
+        : "Switch to dark theme"
+    );
+
+    themeToggle.setAttribute(
+      "aria-pressed",
+      String(theme === "light")
+    );
+  }
+
+  const themeColor = theme === "dark" ? "#24272B" : "#F4F0E8";
+  document.querySelector('meta[name="theme-color"]')
+    ?.setAttribute("content", themeColor);
+}
+
+const savedTheme = localStorage.getItem("portfolio-theme");
+
+const preferredTheme = window.matchMedia(
+  "(prefers-color-scheme: light)"
+).matches ? "light" : "dark";
+
+applyTheme(savedTheme || preferredTheme);
+
+themeToggle?.addEventListener("click", () => {
+  const nextTheme =
+    root.dataset.theme === "dark" ? "light" : "dark";
+
+  localStorage.setItem("portfolio-theme", nextTheme);
+  applyTheme(nextTheme);
+});
