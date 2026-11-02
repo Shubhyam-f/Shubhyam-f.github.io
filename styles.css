@@ -342,7 +342,7 @@ html[data-theme="light"] .nav { background: var(--bg); border-bottom-color: var(
 
 @media(prefers-reduced-motion:reduce) {
 ,::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  /* ==========================================
+ /* ==========================================
    DYNAMIC MOTION & ANIMATIONS (ETL & VISUALS)
    ========================================== */
 
@@ -431,5 +431,3 @@ html[data-theme="light"] .nav { background: var(--bg); border-bottom-color: var(
 
 .mini-donut { transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .project-card:hover .mini-donut { transform: rotate(180deg); }
-.reveal{opacity:1;transform:none}
-}
