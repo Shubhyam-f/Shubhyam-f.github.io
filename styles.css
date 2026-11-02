@@ -208,6 +208,52 @@ html[data-theme="light"] .project-info p {
 }
 .project-card:hover .visual-orb { animation: pulse-glow 2s ease-in-out infinite alternate; }
 .visual-orb:after { animation: orbital-spin 20s linear infinite; }
-
+/* ==========================================
+   DIRECT CONTACT FORM STYLING
+   ========================================== */
+.contact-form {
+  margin-top: 35px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+.form-row input, .contact-form textarea {
+  width: 100%;
+  background: rgba(13,15,17,0.6);
+  border: 1px solid rgba(169,155,190,.15);
+  color: var(--text);
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  border-radius: 2px;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+.form-row input:focus, .contact-form textarea:focus {
+  outline: none;
+  border-color: var(--mint);
+  background: rgba(13,15,17,0.9);
+}
+.contact-form textarea {
+  resize: vertical;
+}
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+}
+html[data-theme="light"] .form-row input, html[data-theme="light"] .contact-form textarea {
+  background: #FFFFFF;
+  border-color: rgba(126,105,145,.3);
+  color: #212529;
+}
+@media(max-width:560px) {
+  .form-row { flex-direction: column; gap: 15px; }
+}
 .mini-donut { transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .project-card:hover .mini-donut { transform: rotate(180deg); }
