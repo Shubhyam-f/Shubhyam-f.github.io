@@ -23,7 +23,7 @@ const projectInfo = {
     description: "An ongoing fundamental equity research project examining Titan's business segments, operating economics and financial performance to develop a reasoned valuation.",
     focus: "Segment-level analysis · Historical financial statements · Operating-driver forecasts · FCFF · Cost of capital · Scenario and sensitivity analysis",
     note: "This research and valuation model is in progress. Forecasts and valuation conclusions will be published with their assumptions and supporting sources once reviewed.",
-    repo: "Not Yet Live"
+    repo: "https://github.com/Shubhyam-f/Titan.Equity.Research"
   },
 
   ultra: {
