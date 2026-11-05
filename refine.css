@@ -1,0 +1,57 @@
+/* refine.css — professional polish layer. Loaded AFTER styles.css. Colour scheme unchanged. */
+
+/* Accessibility: skip link + visible keyboard focus */
+.skip-link{position:absolute;left:-999px;top:8px;z-index:100;background:var(--mint);color:#07131a;padding:10px 14px;font:11px var(--mono)}
+.skip-link:focus{left:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+::selection{background:rgba(185,154,104,.35)}
+.menu-toggle{width:44px;height:44px}
+
+/* Typography: slightly larger small text, calmer headline tracking */
+body{font-size:15px}
+h1{letter-spacing:-.05em}
+h1 em,h2 em{letter-spacing:-.04em}
+.section-heading h2,.about h2,.approach h2,.contact h2{letter-spacing:-.05em}
+.project-info h3{letter-spacing:-.03em}
+.project-dialog h2{letter-spacing:-.04em}
+.wordmark-sub{font-size:9px}
+.hero-meta,.scroll-cue,.work-note,.tool-note,.footer{font-size:10px;color:#8294a6}
+.work-note,.tool-note{font-size:11px}
+.project-kicker{font-size:10px}
+.project-kicker span{color:#8294a6}
+.project-info p{font-size:13px;color:#a3b2c1}
+.visual-label,.status,.filter,.toolbox-head,.tool-group>span,.dialog-kicker,.dialog-block span{font-size:10px}
+.visual-foot{font-size:9px}
+.details-btn{font-size:10px;padding:8px 0}
+.principle p,.dialog-block p{font-size:13px}
+.tool-group b{font-size:11px}
+
+/* Cards: whole card is clickable, calmer hover */
+.project-card{cursor:pointer}
+.project-card:hover{transform:translateY(-2px)}
+
+/* Motion: static ticker (the old one jumped when it looped), no floating chips */
+.ticker-track{animation:none;justify-content:center;flex-wrap:wrap;gap:12px 36px;white-space:normal}
+.ticker-track>*:nth-child(n+10){display:none}
+.data-chip{animation:none}
+
+/* Contact form feedback */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-status{min-height:1.5em;margin:6px 0 0;font:12px var(--sans);color:var(--muted)}
+.form-status.ok{color:#a8c69a}
+.form-status.err{color:#e0a28f}
+.contact-form button:disabled{opacity:.6;cursor:wait}
+
+/* Dialog fits small screens */
+.project-dialog{max-height:88vh;overflow-y:auto}
+
+/* Light theme: lighter body weight (was 500 everywhere), same palette family */
+html[data-theme="light"] body,
+html[data-theme="light"] p,
+html[data-theme="light"] .nav a,
+html[data-theme="light"] .project-info p{font-weight:400}
+html[data-theme="light"] p,
+html[data-theme="light"] .project-info p{color:#3d3a34}
+html[data-theme="light"] .scroll-cue{color:#5e5b55}
+html[data-theme="light"] .form-status.ok{color:#557e4e}
+html[data-theme="light"] .form-status.err{color:#a14a32}
