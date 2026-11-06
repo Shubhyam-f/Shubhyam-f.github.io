@@ -1,6 +1,6 @@
 (()=>{
   // Google Apps Script Web App Endpoint
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzS8fHHEYvCwD7-XkQ1pWHOmxRH9j8geMTQ9yF1q3cUMDQGUKZVU-c3iHgUWt35lzxt/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx77yl5HxlxCX82tlS2AbC96u4IWX4oTeQMMzdAkjtLgclPY_UQvu-n36_s8rh_bhdO/exec";
 
   // Card click interaction
   document.querySelectorAll('.project-card').forEach(card => {
