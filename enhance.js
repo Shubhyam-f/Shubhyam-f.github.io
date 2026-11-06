@@ -1,51 +1,67 @@
-/* enhance.js — loaded after script.js. Adds behaviour only; script.js is untouched. */
 (()=>{
-  // Whole project card opens its dialog (button stays the keyboard target)
-  document.querySelectorAll('.project-card').forEach(card=>{
-    card.addEventListener('click',e=>{
-      if(e.target.closest('a,button'))return;
+  // Google Apps Script Web App Endpoint
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzS8fHHEYvCwD7-XkQ1pWHOmxRH9j8geMTQ9yF1q3cUMDQGUKZVU-c3iHgUWt35lzxt/exec";
+
+  // Card click interaction
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
       card.querySelector('.details-btn')?.click();
     });
   });
 
-  // Filter buttons expose their state to assistive tech
-  const filters=[...document.querySelectorAll('.filter')];
-  const sync=()=>filters.forEach(b=>b.setAttribute('aria-pressed',String(b.classList.contains('active'))));
-  filters.forEach(b=>b.addEventListener('click',sync));
+  // Filter accessibility sync
+  const filters = [...document.querySelectorAll('.filter')];
+  const sync = () => filters.forEach(b => b.setAttribute('aria-pressed', String(b.classList.contains('active'))));
+  filters.forEach(b => b.addEventListener('click', sync));
   sync();
 
-  // Escape closes the mobile menu
-  document.addEventListener('keydown',e=>{
-    if(e.key!=='Escape')return;
-    const nav=document.querySelector('.nav'),btn=document.querySelector('.menu-toggle');
-    if(nav?.classList.contains('open')){
+  // Escape key closes mobile navigation
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const nav = document.querySelector('.nav'), btn = document.querySelector('.menu-toggle');
+    if (nav?.classList.contains('open')) {
       nav.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-      btn.setAttribute('aria-label','Open navigation');
-      btn.focus();
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.focus();
     }
   });
 
-  // Contact form: send in place and show the result, instead of leaving the site
-  const form=document.getElementById('contactForm');
-  if(!form)return;
-  const status=document.getElementById('formStatus');
-  const btn=form.querySelector('button[type="submit"]');
-  form.addEventListener('submit',async e=>{
+  // Form submission handler
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const status = document.getElementById('formStatus');
+  const btn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    status.className='form-status';
-    status.textContent='Sending…';
-    btn.disabled=true;
-    try{
-      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-      if(!res.ok)throw new Error(String(res.status));
+    status.className = 'form-status';
+    status.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim()
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
       form.reset();
       status.classList.add('ok');
-      status.textContent='Thanks — your message has been sent.';
-    }catch{
+      status.textContent = 'Thanks! Your message has been sent.';
+    } catch (err) {
       status.classList.add('err');
-      status.textContent='The message could not be sent. Please try again, or contact me on LinkedIn.';
+      status.textContent = 'Something went wrong. Please connect with me on LinkedIn.';
     }
-    btn.disabled=false;
+    btn.disabled = false;
   });
 })();
