@@ -40,19 +40,18 @@
     status.textContent = 'Sending…';
     btn.disabled = true;
 
-    const payload = {
-      name: form.name.value.trim(),
-      email: form.email.value.trim(),
-      subject: form.subject.value.trim(),
-      message: form.message.value.trim()
-    };
+    // Package data as standard form URL-encoded data to bypass CORS issues
+    const formData = new URLSearchParams();
+    formData.append("name", form.name.value.trim());
+    formData.append("email", form.email.value.trim());
+    formData.append("subject", form.subject.value.trim());
+    formData.append("message", form.message.value.trim());
 
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        // Send as a standard form submission
+        body: formData 
       });
 
       form.reset();
